@@ -1,0 +1,42 @@
+<p>Welcome Srinu</p>
+
+
+<button type="button" (click)="openForm()">Add Bus</button>
+<!-- <button type="button" (click)="Getbusdetails()">Get Bus Details</button> -->
+
+
+<ag-grid-angular
+  class="ag-theme-balham"
+  [rowData]="busdetails"
+  [columnDefs]="columnDefs"
+  [defaultColDef]="defaultColDef"
+  [rowSelection]="rowSelection"
+  [gridOptions]="gridOptions"
+  (gridReady)="onGridReady($event)">
+  
+</ag-grid-angular>
+
+
+
+
+<div *ngIf="isFormVisible" class="modal">
+  <div class="modal-content">
+    <h2>{{ isEditing ? 'Edit Bus Details' : 'Add New Bus' }}</h2>
+    <form (ngSubmit)="isEditing ? editdata() : addNewBus()">
+      <label for="busName">Bus Name:</label>
+      <input id="busName" [(ngModel)]="currentBusData.busName" name="busName" required>
+
+      <label for="busType">Bus Type:</label>
+      <input id="busType" [(ngModel)]="currentBusData.busType" name="busType" required>
+
+      <label for="status">Status:</label>
+      <input id="status" [(ngModel)]="currentBusData.status" name="status" required>
+
+      <label for="capacity">Capacity:</label>
+      <input id="capacity" [(ngModel)]="currentBusData.capacity" name="capacity" required>
+
+      <button type="submit">{{ isEditing ? 'Save Changes' : 'Add Bus' }}</button>
+      <button type="button" (click)="closeForm()">Cancel</button>
+    </form>
+  </div>
+</div>
