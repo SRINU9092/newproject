@@ -1,0 +1,23 @@
+/* Ensure the mat-form-field fits inside the cell */
+.mat-form-field {
+    width: 100%;  /* Make the form field take full width of the grid cell */
+    height: 100%; /* Allow the field to take up full available height */
+    box-sizing: border-box;
+  }
+  
+  .mat-input-element {
+    height: 100%; /* Ensure input field is fully stretched vertically */
+    text-align: center; /* Optional: center the text inside input */
+  }
+  
+  /* Optional: Adjust the date picker toggle button if necessary */
+  .mat-datepicker-toggle {
+    height: 40px;  /* Adjust toggle button height if needed */
+  }
+  
+  /* Optional: Adjust the input padding */
+  input.mat-input-element {
+    padding: 0;  /* Reduce padding if it's too large */
+    height: 100%;  /* Ensure the input takes up all available space */
+  }
+  

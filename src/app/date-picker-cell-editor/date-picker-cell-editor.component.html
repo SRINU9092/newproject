@@ -1,0 +1,6 @@
+<mat-form-field appearance="fill">
+    <input matInput [matDatepicker]="datepicker" [formControl]="dateControl" (dateChange)="onDateChanged()" />
+    <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+    <mat-datepicker #datepicker startView="multi-year" (closed)="onDateChanged()"></mat-datepicker>
+  </mat-form-field>
+  

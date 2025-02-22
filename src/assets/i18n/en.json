@@ -1,0 +1,32 @@
+{
+    
+        "id": "ID",
+        "busName": "Bus Name",
+        "busType": "Bus Type",
+        "status": "Status",
+        "capacity": "Capacity",
+        "actions": "Actions",
+      
+   
+    "WELCOME": "Welcome Srinu",
+    "ADD_BUS": "Add Bus",
+    "BUS_NAME": "Bus Name",
+    "BUS_TYPE": "Bus Type",
+    "STATUS": "Status",
+    "CAPACITY": "Capacity",
+    "ACTIVE": "Active",
+    "INACTIVE": "Inactive",
+    "ADD_BUS_FORM": "Add New Bus",
+    "BUS_NAME_REQUIRED": "Bus Name is required",
+    "BUS_NAME_MIN": "Bus Name must be at least 3 characters long",
+    "BUS_NAME_MAX": "Bus Name cannot exceed 50 characters",
+    "BUS_TYPE_REQUIRED": "Bus Type is required",
+    "BUS_TYPE_MIN": "Bus Type must be at least 3 characters long",
+    "BUS_TYPE_MAX": "Bus Type cannot exceed 50 characters",
+    "STATUS_REQUIRED": "Status is required",
+    "STATUS_PATTERN": "Status must be either 'Active' or 'Inactive'",
+    "CAPACITY_REQUIRED": "Capacity is required",
+    "CAPACITY_MIN": "Capacity must be at least 10",
+    "CAPACITY_MAX": "Capacity cannot exceed 100"
+  }
+  

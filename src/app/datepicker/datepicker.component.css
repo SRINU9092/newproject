@@ -1,0 +1,45 @@
+/* Ensure proper layout and spacing */
+mat-form-field {
+    width: 100%; /* Ensure the form field takes full width of its container */
+    margin: 0;  /* Remove default margin */
+  }
+  
+  mat-datepicker {
+    z-index: 9999; /* Ensure the datepicker is above other elements */
+    position: relative;
+  }
+  
+  /* Optional: Style the input field */
+  mat-form-field input {
+    font-size: 14px;  /* Set font size */
+    padding: 10px 14px;  /* Add padding for better readability */
+    background-color: white;  /* Ensure the background is white for better contrast */
+    border-radius: 4px;  /* Add some rounding to the corners */
+  }
+  
+  /* Style for Material Datepicker */
+  .mat-datepicker-content {
+    background: white;  /* Background color for the calendar popup */
+    border-radius: 4px; /* Round the edges */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Add some shadow to lift the popup */
+  }
+  
+  /* Optional: Datepicker calendar popup */
+  .mat-calendar {
+    width: auto; /* Adjust width as needed */
+    max-width: 300px;  /* Maximum width for the calendar popup */
+  }
+  
+  .mat-calendar-body-selected {
+    background-color: #3f51b5 !important; /* Highlight selected date */
+    color: white !important;
+  }
+  
+  .mat-calendar-body-today {
+    background-color: #f0f0f0 !important; /* Highlight today’s date */
+  }
+  
+  .mat-datepicker-toggle-button {
+    display: none; /* Hide the toggle button if you prefer only the input field to trigger the calendar */
+  }
+  

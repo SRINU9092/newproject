@@ -1,0 +1,31 @@
+{
+  
+    "id": "ID",
+    "busName": "Nombre del Bus",
+    "busType": "Tipo de Bus",
+    "status": "Estado",
+    "capacity": "Capacidad",
+    "actions": "Acciones"
+  ,
+  
+  "WELCOME": "Bienvenido Srinu",
+  "ADD_BUS": "Agregar Autobús",
+  "BUS_NAME": "Nombre del Autobús",
+  "BUS_TYPE": "Tipo de Autobús",
+  "STATUS": "Estado",
+  "CAPACITY": "Capacidad",
+  "ACTIVE": "Activo",
+  "INACTIVE": "Inactivo",
+  "ADD_BUS_FORM": "Agregar Nuevo Autobús",
+  "BUS_NAME_REQUIRED": "El nombre del autobús es obligatorio",
+  "BUS_NAME_MIN": "El nombre del autobús debe tener al menos 3 caracteres",
+  "BUS_NAME_MAX": "El nombre del autobús no puede exceder los 50 caracteres",
+  "BUS_TYPE_REQUIRED": "El tipo de autobús es obligatorio",
+  "BUS_TYPE_MIN": "El tipo de autobús debe tener al menos 3 caracteres",
+  "BUS_TYPE_MAX": "El tipo de autobús no puede exceder los 50 caracteres",
+  "STATUS_REQUIRED": "El estado es obligatorio",
+  "STATUS_PATTERN": "El estado debe ser 'Activo' o 'Inactivo'",
+  "CAPACITY_REQUIRED": "La capacidad es obligatoria",
+  "CAPACITY_MIN": "La capacidad debe ser al menos 10",
+  "CAPACITY_MAX": "La capacidad no puede exceder los 100"
+}

@@ -1,42 +1,143 @@
-<p>Welcome Srinu</p>
+
+<!-- <mat-menu #ref="matMenu" >
+  <button mat-menu-item>Item 1</button>
+  <button mat-menu-item>Item 2</button>
+</mat-menu> 
+<button mat-raised-button [matMenuTriggerFor]="ref">menu</button>
+ -->
 
 
-<button type="button" (click)="openForm()">Add Bus</button>
-<!-- <button type="button" (click)="Getbusdetails()">Get Bus Details</button> -->
+<mat-sidenav-container>
+  <mat-sidenav  veiw="over" [opened]="navopened">side bar
+<div class="down2"><button mat-reasied-button color="accent">logout</button></div>
+</mat-sidenav>
+  
+  <mat-sidenav-content>
+   <mat-icon (click)="toggle()">view_headline</mat-icon>
+  
+
+<mat-toolbar color="primary" class="nav">
+  <div> 
+    
+    <mat-icon>home</mat-icon>
+    {{ 'WELCOME' | translate }}
+  </div> 
+
+  <div>
+    <span>
+      <select (change)="onLanguageChange($event)" >
+        <option value="en">English</option>
+        <option value="es">Español</option>
+        <option value="fr">Français</option>
+      </select>
+    </span>
+  </div>
+</mat-toolbar>
 
 
+<button mat-flat-button  color="accent" class="down"   (click)="openAddBusForm()">{{ 'ADD_BUS' | translate }}</button>
+<!-- <div>
+  <mat-icon>home</mat-icon>
+  <mat-icon>grade</mat-icon>
+  <mat-icon>fingerprint</mat-icon>
+</div> -->
+<!-- <div class="typo-graphy">
+  <h1>hi how are you</h1>
+  <h2>hi how are you</h2><h3>hi how are you</h3><h4>hi how are you</h4>
+</div> -->
+<!-- <div class="mat-display-4">hi how are you</div>
+<div class="mat-display-3">hi how are you</div>
+<div class="mat-display-2">hi how are you</div> -->
 <ag-grid-angular
   class="ag-theme-balham"
   [rowData]="busdetails"
   [columnDefs]="columnDefs"
   [defaultColDef]="defaultColDef"
-  [rowSelection]="rowSelection"
   [gridOptions]="gridOptions"
-  (gridReady)="onGridReady($event)">
-  
+  (gridReady)="onGridReady($event)"
+  (cellEditingStopped)="onCellEditingStopped($event)">
 </ag-grid-angular>
-
-
-
 
 <div *ngIf="isFormVisible" class="modal">
   <div class="modal-content">
-    <h2>{{ isEditing ? 'Edit Bus Details' : 'Add New Bus' }}</h2>
-    <form (ngSubmit)="isEditing ? editdata() : addNewBus()">
-      <label for="busName">Bus Name:</label>
-      <input id="busName" [(ngModel)]="currentBusData.busName" name="busName" required>
+    <h2>{{ 'ADD_BUS_FORM' | translate }}</h2>
+    <form [formGroup]="busForm" (ngSubmit)="addNewBus()">
+      <label for="busName">{{ 'BUS_NAME' | translate }}:</label>
+      <input id="busName" formControlName="busName" required>
+      <div *ngIf="busForm.get('busName')?.touched && busForm.get('busName')?.invalid">
+        <small *ngIf="busForm.get('busName')?.errors?.['required']">{{ 'BUS_NAME_REQUIRED' | translate }}</small>
+        <small *ngIf="busForm.get('busName')?.errors?.['minlength']">{{ 'BUS_NAME_MIN' | translate }}</small>
+        <small *ngIf="busForm.get('busName')?.errors?.['maxlength']">{{ 'BUS_NAME_MAX' | translate }}</small>
+      </div>
 
-      <label for="busType">Bus Type:</label>
-      <input id="busType" [(ngModel)]="currentBusData.busType" name="busType" required>
+      <label for="busType">{{ 'BUS_TYPE' | translate }}:</label>
+      <input id="busType" formControlName="busType" required>
+      <div *ngIf="busForm.get('busType')?.touched && busForm.get('busType')?.invalid">
+        <small *ngIf="busForm.get('busType')?.errors?.['required']">{{ 'BUS_TYPE_REQUIRED' | translate }}</small>
+        <small *ngIf="busForm.get('busType')?.errors?.['minlength']">{{ 'BUS_TYPE_MIN' | translate }}</small>
+        <small *ngIf="busForm.get('busType')?.errors?.['maxlength']">{{ 'BUS_TYPE_MAX' | translate }}</small>
+      </div>
 
-      <label for="status">Status:</label>
-      <input id="status" [(ngModel)]="currentBusData.status" name="status" required>
+      <label for="status">{{ 'STATUS' | translate }}:</label>
+      <input id="status" formControlName="status" required>
+      <div *ngIf="busForm.get('status')?.touched && busForm.get('status')?.invalid">
+        <small *ngIf="busForm.get('status')?.errors?.['required']">{{ 'STATUS_REQUIRED' | translate }}</small>
+        <small *ngIf="busForm.get('status')?.errors?.['pattern']">{{ 'STATUS_PATTERN' | translate }}</small>
+      </div>
 
-      <label for="capacity">Capacity:</label>
-      <input id="capacity" [(ngModel)]="currentBusData.capacity" name="capacity" required>
-
-      <button type="submit">{{ isEditing ? 'Save Changes' : 'Add Bus' }}</button>
-      <button type="button" (click)="closeForm()">Cancel</button>
+      <label for="capacity">{{ 'CAPACITY' | translate }}:</label>
+      <input id="capacity" formControlName="capacity" required>
+      <div *ngIf="busForm.get('capacity')?.touched && busForm.get('capacity')?.invalid">
+        <small *ngIf="busForm.get('capacity')?.errors?.['required']">{{ 'CAPACITY_REQUIRED' | translate }}</small>
+        <small *ngIf="busForm.get('capacity')?.errors?.['min']">{{ 'CAPACITY_MIN' | translate }}</small>
+        <small *ngIf="busForm.get('capacity')?.errors?.['max']">{{ 'CAPACITY_MAX' | translate }}</small>
+      </div>
+      <button type="submit">{{ 'ADD_BUS' | translate }}</button>
+      <button type="button" (click)="closeForm()">{{ 'CANCEL' | translate }}</button>
     </form>
   </div>
 </div>
+
+<div class="example-container">
+  <table mat-table [dataSource]="dataSource">
+    <!-- Employee ID Column -->
+    <ng-container matColumnDef="employeeId">
+      <th mat-header-cell *matHeaderCellDef> Employee ID </th>
+      <td mat-cell *matCellDef="let element"> 
+        <mat-checkbox [(ngModel)]="element.checked"></mat-checkbox> {{element.employeeId}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> Position </th>
+      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+    </ng-container>
+
+    <!-- Department Column -->
+    <ng-container matColumnDef="department">
+      <th mat-header-cell *matHeaderCellDef> Department </th>
+      <td mat-cell *matCellDef="let element"> {{element.department}} </td>
+    </ng-container>
+
+    <!-- Salary Column -->
+    <ng-container matColumnDef="salary">
+      <th mat-header-cell *matHeaderCellDef> Salary </th>
+      <td mat-cell *matCellDef="let element"> ${{element.salary | number}} </td>
+    </ng-container>
+
+    <!-- Header Row -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+    <!-- Data Rows -->
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="specific-row"></tr>
+  </table>
+</div>
+
+</mat-sidenav-content>
+</mat-sidenav-container>
