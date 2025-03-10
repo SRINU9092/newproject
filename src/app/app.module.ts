@@ -28,6 +28,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { DatePickerCellEditorComponent } from './date-picker-cell-editor/date-picker-cell-editor.component';
+import { SrinuComponent } from './srinu/srinu.component';
 
 // Import FormsModule for ngModel
 
@@ -44,6 +45,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     DatepickerComponent,
     SampleComponent,
     DatePickerCellEditorComponent,
+    SrinuComponent,
     
   ],
   imports: [
